@@ -30,15 +30,15 @@
 | [O&O ShutUp10++](https://www.oo-software.com/en/shutup10) | Portable EXE | ✅ | ✅ | No install, trusted vendor, free |
 | [W10Privacy](https://www.w10privacy.de/english-home/) | Portable EXE | ✅ | ✅ | Most detailed privacy controls |
 
-### One-Line Launch Commands
+## One-Line Launch Commands
 
-# Chris Titus WinUtil (Recommended for most users)
+### Chris Titus WinUtil (Recommended for most users)
 irm "https://christitus.com/win" | iex
 
-# Win11Debloat
+### Win11Debloat
 & ([scriptblock]::Create((irm "https://debloat.raphi.re/")))
 
-# SophiApp
+### SophiApp
 irm app.sophi.app -useb | iex
 
 ---
