@@ -1,0 +1,6 @@
+# .lycheeignore
+# Sites that return 403/523 to automated checkers but work in browsers
+https://www\.w10privacy\.de/.*
+https://infotoast\.org/.*
+https://pcdominant\.com/.*
+https://www\.site2unblock\.com/.*
