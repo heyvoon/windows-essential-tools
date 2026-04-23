@@ -22,6 +22,8 @@ If you prefer to submit changes directly:
 4. **Commit & Push** with clear, descriptive messages
 5. **Open a Pull Request** targeting the `main` branch
 
+> 🛠️ **For maintainers:** See [MAINTAINERS.md](MAINTAINERS.md) for workflow instructions and review criteria.
+
 ---
 
 ## 📁 Where to Place Entries
