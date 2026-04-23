@@ -4,19 +4,27 @@ Thank you for your interest in improving **Windows Debloat & Privacy Tools**! Th
 
 ---
 
-## 📋 How to Contribute
+## 🛠️ Two Ways to Contribute
 
-1. **Fork** this repository to your GitHub account.
-2. **Create a branch** for your changes: `git checkout -b feat/add-tool-name` or `fix/broken-link`.
-3. **Make your changes** following the guidelines below.
-4. **Commit & Push** with clear, descriptive messages.
-5. **Open a Pull Request** targeting the `main` branch.
+You can help improve this collection without writing a single line of code:
+
+### 📝 Option 1: Use the Issue Template (Recommended)
+1. Navigate to the **Issues** tab and click **New issue**
+2. Select **`📦 Tool Request (Add / Update / Remove)`**
+3. Fill out the structured form with tool details, compatibility, and verification notes
+4. Submit. Maintainers will verify, format, and merge a PR on your behalf!
+
+### 💻 Option 2: Open a Pull Request
+If you prefer to submit changes directly:
+1. **Fork** this repository to your GitHub account
+2. **Create a branch**: `git checkout -b feat/add-tool-name` or `fix/broken-link`
+3. **Make your changes** following the guidelines below
+4. **Commit & Push** with clear, descriptive messages
+5. **Open a Pull Request** targeting the `main` branch
 
 ---
 
-## 🛠️ Adding or Updating Tools
-
-### 📁 Where to Place Entries
+## 📁 Where to Place Entries
 | File | Purpose |
 |------|---------|
 | `tools/active-github.md` | Actively maintained open-source repos |
@@ -25,7 +33,7 @@ Thank you for your interest in improving **Windows Debloat & Privacy Tools**! Th
 | `tools/guides-articles.md` | Tutorials, videos, comparisons, research |
 | `categories/*.md` | Function-based cross-references |
 
-### 📝 Required Template
+## 📝 Required Template
 Every tool entry **must** follow this exact format:
 ```markdown
 ### [Tool Name](URL)
@@ -43,7 +51,7 @@ If a tool serves multiple purposes, duplicate the entry in relevant `categories/
 ---
 
 ## ✅ Verification Checklist
-Before submitting, verify each tool:
+Before submitting via PR or Issue, verify each tool:
 
 - [ ] **Tested in a VM** or isolated environment (Windows 10 22H2+ / 11 23H2+)
 - [ ] **Source is transparent**: Open-source repo or reputable vendor
@@ -64,7 +72,7 @@ Before submitting, verify each tool:
 ## 📥 Pull Request Guidelines
 
 - **Title**: `[Add/Update/Remove] Tool Name` or `fix: broken link in active-github.md`
-- **Description**: Briefly explain what you changed and why.
+- **Description**: Briefly explain what you changed and why. Reference the issue number if you used the template.
 - **Verification Note**: Include a line like `Tested on Win11 24H2 VM, safe defaults confirmed.`
 - **One logical change per PR**: Group related updates if necessary, but keep PRs focused.
 - **Automated Checks**: Ensure the link-checker workflow passes before requesting review.
@@ -105,6 +113,6 @@ Original tool authors retain their respective licenses; this repo only links to 
 
 ---
 
-> 💡 **Need help?** Open a `Discussion` or tag `@your-username` in an issue. We're happy to guide you through your first PR!
+> 💡 **Need help?** Open a `Discussion` or tag the maintainers in an issue. We're happy to guide you through your first contribution!
 
 *Last updated: April 2026*
