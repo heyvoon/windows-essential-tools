@@ -77,5 +77,3 @@
 - [Ghacks: Privacy Tools Comparison (2015)](https://www.ghacks.net/2015/08/14/comparison-of-windows-10-privacy-tools/) - Historical baseline
 - [Reddit: Win10 Best Privacy Practices](https://np.reddit.com/r/privacytoolsIO/comments/fwgvsb/windows_10_best_privacy_practices/) - Community-voted hardening steps
 - [GeckoAndFly: Disable Spying Tools List](https://www.geckoandfly.com/25083/free-tools-disable-stop-windows-spying-tracking-you/) - Curated compilation
-- [PCDominant: Debloater 2021 Guide](https://pcdominant.com/windows-10-debloater-2021/) - Manual vs tool comparison
-- [InfoToast: Debloat Tutorial](https://infotoast.org/site/index.php/2021/04/27/how-to-debloat-windows-10-tutorial/) - Registry/service walkthrough

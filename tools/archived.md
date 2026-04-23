@@ -36,25 +36,11 @@
 - **Description:** Event log manipulation and tracking bypass tool
 - **Notes:** Security research tool, not a standard debloater. May break auditing.
 
-### [site2unblock Win10 Spy Disabler](https://www.site2unblock.com/win10-spy-disabler/)
-- **Type:** `Unknown/Portable`
-- **OS:** `Win10`
-- **Last Verified:** `2026-04-23`
-- **Description:** Unverified telemetry disabler
-- **Notes:** Domain frequently changes, no source transparency. Use with extreme caution.
-
 ### [Sycnex/Windows10Debloater](https://github.com/Sycnex/Windows10Debloater)
 - **Type:** `PowerShell`
 - **OS:** `Win10`
 - **Last Verified:** `2026-04-23`
 - **Description:** Classic interactive debloater with GUI wrapper
 - **Notes:** Last major update 2020. Breaks Store dependencies on 22H2+.
-
-### [Win10 Spy Disabler (site2unblock)](https://www.site2unblock.com/win10-spy-disabler/)
-- **Type:** `Portable EXE`
-- **OS:** `Win10`
-- **Last Verified:** `2026-04-23`
-- **Description:** Unverified telemetry disabler
-- **Notes:** ⛔ Domain frequently changes, no source transparency. Link dead as of 2026-04. Use with extreme caution or avoid.
 
 *(Move any tool here if: no commits >12mo, open critical issues, or superseded by newer alternatives)*

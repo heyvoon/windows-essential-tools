@@ -41,14 +41,6 @@
 - **Launch/Install:** Install, run immunization
 - **Notes:** Trusted vendor, lightweight background service
 
-### [W10 Spy Disabler (site2unblock)](https://www.site2unblock.com/win10-spy-disabler/)
-- **Type:** `Portable EXE`
-- **OS:** `Win10`
-- **Last Verified:** `2026-04-23`
-- **Description:** Simple telemetry disabler with registry edits
-- **Launch/Install:** Download, run
-- **Notes:** Limited transparency. Use with caution; verify source.
-
 ### [Win10 SpyStop (MajorGeeks)](https://www.majorgeeks.com/files/details/win10_spystop.html)
 - **Type:** `Portable EXE`
 - **OS:** `Win10`

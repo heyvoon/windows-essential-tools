@@ -65,22 +65,6 @@
 - **Launch/Install:** Download binary or build from source
 - **Notes:** Win10 support being phased; highly recommended for Win11
 
-### [builtbybel/Debotnet](https://github.com/builtbybel/Debotnet)
-- **Type:** `C# Portable`
-- **OS:** `Both`
-- **Last Verified:** `2026-04-23`
-- **Description:** Portable privacy tool with registry and service controls
-- **Launch/Install:** Download EXE, run as admin
-- **Notes:** Clean UI, frequent updates, safe rollback
-
-### [builtbybel/SharpApp](https://github.com/builtbybel/SharpApp)
-- **Type:** `C# GUI`
-- **OS:** `Both`
-- **Last Verified:** `2026-04-23`
-- **Description:** App manager for removing/repairing built-in Windows Store apps
-- **Launch/Install:** Download from releases
-- **Notes:** Complements Debotnet for app-level management
-
 ### [W4RH4WK/Debloat-Windows-10](https://github.com/W4RH4WK/Debloat-Windows-10)
 - **Type:** `PowerShell`
 - **OS:** `Win10`

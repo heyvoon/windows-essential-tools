@@ -37,18 +37,6 @@
 - **Summary:** Coverage of PrivateZilla's audit features
 - **Notes:** Tool is now largely superseded by WPD/W10Privacy.
 
-### [InfoToast: How to Debloat Windows 10 Tutorial](https://infotoast.org/site/index.php/2021/04/27/how-to-debloat-windows-10-tutorial/)
-- **Type:** `Tutorial`
-- **Updated:** `2021`
-- **Summary:** Step-by-step manual debloating guide
-- **Notes:** Focuses on PowerShell and registry edits.
-
-### [PCDominant: Windows 10 Debloater 2021](https://pcdominant.com/windows-10-debloater-2021/)
-- **Type:** `Guide`
-- **Updated:** `2021`
-- **Summary:** General overview of debloating strategies
-- **Notes:** Mix of manual and tool-based methods.
-
 ### [Reddit: Telemetry Re-enabling Issues](https://np.reddit.com/r/privacytoolsIO/comments/lu1odp/windows_10_telemetry_keeps_re_enabling_itself/)
 - **Type:** `Discussion`
 - **Updated:** `2021`
