@@ -1,0 +1,150 @@
+name: "➕ Manual: Add New Tool"
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "GitHub Issue Number (from tool-request form)"
+        required: true
+        type: string
+      tool_name:
+        description: "Exact tool name"
+        required: true
+        type: string
+      tool_url:
+        description: "Official URL or GitHub repo"
+        required: true
+        type: string
+      tool_type:
+        description: "Distribution type"
+        required: true
+        type: choice
+        options:
+          - PowerShell Script
+          - GUI Application
+          - CLI Tool
+          - Portable EXE
+          - Web Generator
+          - Batch or Config Script
+          - Installer
+          - Other
+      os_compatibility:
+        description: "Windows compatibility (comma-separated)"
+        required: true
+        type: string
+        default: "Win10, Win11"
+      target_files:
+        description: "Files to update (comma-separated paths)"
+        required: true
+        type: string
+        default: "tools/active-github.md, categories/privacy-tweakers.md"
+      launch_command:
+        description: "Launch/install command (optional)"
+        required: false
+        type: string
+        default: "Download & run"
+      notes:
+        description: "Warnings or compatibility notes"
+        required: false
+        type: string
+        default: "None"
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  add-tool:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: 📅 Get today's date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: ✏️ Format tool entry
+        id: format
+        run: |
+          ENTRY="### [${{ inputs.tool_name }}](${{ inputs.tool_url }})
+          - **Type:** \`${{ inputs.tool_type }}\`
+          - **OS:** \`${{ inputs.os_compatibility }}\`
+          - **Last Verified:** ${{ steps.date.outputs.date }}
+          - **Description:** Added via issue #${{ inputs.issue_number }}
+          - **Launch/Install:** ${{ inputs.launch_command }}
+          - **Notes:** ${{ inputs.notes }}"
+          echo "entry<<EOF" >> $GITHUB_OUTPUT
+          echo "$ENTRY" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: 📝 Update markdown files
+        run: |
+          IFS=',' read -ra FILES <<< "${{ inputs.target_files }}"
+          for file in "${FILES[@]}"; do
+            file=$(echo "$file" | xargs)  # trim whitespace
+            if [ -f "$file" ]; then
+              echo "✏️ Updating $file"
+              # Insert before the last line (before closing content)
+              head -n -1 "$file" > temp.md
+              echo "" >> temp.md
+              echo "${{ steps.format.outputs.entry }}" >> temp.md
+              echo "" >> temp.md
+              tail -n 1 "$file" >> temp.md
+              mv temp.md "$file"
+            else
+              echo "⚠️ File not found: $file"
+            fi
+          done
+
+      - name: 🌿 Create PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "feat: add ${{ inputs.tool_name }} via issue #${{ inputs.issue_number }}"
+          branch: manual-add-tool-${{ inputs.issue_number }}
+          delete-branch: true
+          title: "📦 Add: ${{ inputs.tool_name }}"
+          body: |
+            **Submitted via:** Issue #${{ inputs.issue_number }}  
+            **Tool:** ${{ inputs.tool_name }}  
+            **URL:** ${{ inputs.tool_url }}  
+            **Type:** ${{ inputs.tool_type }}  
+            **OS:** ${{ inputs.os_compatibility }}  
+
+            ### ✅ Maintainer Checklist
+            - [ ] Verified tool works on stated Windows versions
+            - [ ] Confirmed URL is official source (no malware)
+            - [ ] Entry formatting matches template
+            - [ ] Launch command tested (if applicable)
+
+            > ⚠️ Do not merge if tool requires disabling antivirus or breaks core Windows features.
+          labels: |
+            📦 tool addition
+            🔍 needs-review
+          assignees: ${{ github.repository_owner }}
+
+      - name: 💬 Comment on issue
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ inputs.issue_number }}
+          body: |
+            ✅ **Tool added!** PR created for review: ${{ github.server_url }}/${{ github.repository }}/pulls?q=${{ inputs.tool_name }}
+            
+            Thanks for the submission, @${{ github.actor }}! 🙌
+          reactions: '+1'
+
+      - name: 🏷️ Label issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              issue_number: ${{ inputs.issue_number }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['✅ added', 'processed']
+            });

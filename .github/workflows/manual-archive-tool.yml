@@ -1,0 +1,136 @@
+name: "🗑️ Manual: Archive Tool"
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "GitHub Issue Number"
+        required: true
+        type: string
+      tool_name:
+        description: "Exact tool name to archive"
+        required: true
+        type: string
+      tool_url:
+        description: "Tool URL (for archived entry)"
+        required: true
+        type: string
+      archive_reason:
+        description: "Why archive this tool?"
+        required: true
+        type: choice
+        options:
+          - Repo discontinued/archived
+          - Broken on modern Windows
+          - Security concerns
+          - Superseded by better alternative
+          - Domain dead/unreachable
+          - Other
+      target_files_remove:
+        description: "Files to REMOVE from (comma-separated)"
+        required: true
+        type: string
+        default: "tools/active-github.md, tools/active-websites.md, categories/telemetry-blockers.md"
+      notes:
+        description: "Additional warnings for archived entry"
+        required: false
+        type: string
+        default: "⛔ Archived - see issue #ISSUE_NUMBER for details"
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  archive-tool:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: 📅 Get today's date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: ✏️ Create archived entry
+        id: format
+        run: |
+          ENTRY="### [${{ inputs.tool_name }}](${{ inputs.tool_url }})
+          - **Type:** `Discontinued`
+          - **OS:** `Legacy`
+          - **Last Verified:** ${{ steps.date.outputs.date }}
+          - **Description:** Archived tool (no longer maintained or safe for modern Windows)
+          - **Notes:** ⛔ ${{ inputs.archive_reason }}. ${{ inputs.notes }}
+
+          "
+          echo "entry<<EOF" >> $GITHUB_OUTPUT
+          echo "$ENTRY" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: 📝 Add to archived.md
+        run: |
+          echo "${{ steps.format.outputs.entry }}" >> tools/archived.md
+
+      - name: 🗑️ Remove from active files
+        run: |
+          IFS=',' read -ra FILES <<< "${{ inputs.target_files_remove }}"
+          for file in "${FILES[@]}"; do
+            file=$(echo "$file" | xargs)
+            if [ -f "$file" ]; then
+              echo "✏️ Removing from $file"
+              # Remove the tool entry block (from ### [Tool] to next ###)
+              awk '
+                /^### \[.*${{ inputs.tool_name }}/ { skip=1; next }
+                /^### \[/ && skip { skip=0 }
+                !skip { print }
+              ' "$file" > temp.md && mv temp.md "$file"
+            else
+              echo "⚠️ File not found: $file"
+            fi
+          done
+
+      - name: 🌿 Create PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: archive ${{ inputs.tool_name }} (${{ inputs.archive_reason }}) via #${{ inputs.issue_number }}"
+          branch: manual-archive-tool-${{ inputs.issue_number }}
+          delete-branch: true
+          title: "🗑️ Archive: ${{ inputs.tool_name }}"
+          body: |
+            **Issue:** #${{ inputs.issue_number }}  
+            **Tool:** ${{ inputs.tool_name }}  
+            **Reason:** ${{ inputs.archive_reason }}  
+
+            ### ✅ Maintainer Checklist
+            - [ ] Confirmed tool is truly discontinued/broken
+            - [ ] Entry removed from all active files
+            - [ ] Archived entry added with clear warnings
+            - [ ] No broken links remain in active listings
+          labels: |
+            🗑️ tool archive
+            🔍 needs-review
+          assignees: ${{ github.repository_owner }}
+
+      - name: 💬 Comment on issue
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ inputs.issue_number }}
+          body: |
+            ✅ **Tool archived!** PR created: ${{ github.server_url }}/${{ github.repository }}/pulls?q=${{ inputs.tool_name }}
+          reactions: '+1'
+
+      - name: 🏷️ Label issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              issue_number: ${{ inputs.issue_number }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['🗑️ archived', 'processed']
+            });
