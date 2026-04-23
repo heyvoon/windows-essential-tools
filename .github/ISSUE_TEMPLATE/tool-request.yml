@@ -1,103 +1,94 @@
-name: "📦 Tool Request (Add / Update / Remove)"
-description: "Request to add, update, or archive a Windows debloat/privacy tool."
+name: "Tool Request (Add / Update / Remove)"
+description: "Request to add, update, or archive a Windows debloat or privacy tool."
 title: "[Action]: "
-labels: ["🛠️ tool management", "📖 documentation"]
+labels: ["tool-management", "documentation"]
 
 body:
   - type: markdown
     attributes:
-      value: |
-        Please select the action type and fill out the relevant sections below. 
-        Maintainers will verify and apply changes within 3-5 days.
+      value: "Please select the action type and fill out the relevant sections below. Maintainers will verify and apply changes within 3 to 5 days."
 
   - type: dropdown
     id: action_type
     attributes:
-      label: 🔹 Action Type
-      description: What would you like to do?
+      label: "Action Type"
+      description: "What would you like to do?"
       options:
-        - ➕ Add New Tool
-        - 🔄 Update Existing Tool
-        - 🗑️ Remove / Archive Tool
+        - "Add New Tool"
+        - "Update Existing Tool"
+        - "Remove or Archive Tool"
     validations:
       required: true
 
   - type: input
     id: tool_name
     attributes:
-      label: Tool Name
-      description: Exact name as it appears in the repo/site
-      placeholder: e.g., ChrisTitusTech/winutil
+      label: "Tool Name"
+      description: "Exact name as it appears on the official repo or website"
+      placeholder: "e.g. ChrisTitusTech/winutil"
     validations:
       required: true
 
   - type: input
     id: tool_url
     attributes:
-      label: Official URL / Repository
-      placeholder: https://github.com/... or https://...
+      label: "Official URL or Repository"
+      placeholder: "https://github.com/example/tool"
     validations:
       required: true
 
   - type: dropdown
     id: tool_type
     attributes:
-      label: Distribution Type
+      label: "Distribution Type"
       options:
-        - PowerShell Script
-        - GUI Application
-        - CLI Tool
-        - Portable EXE
-        - Web Generator
-        - Batch/Config Script
-        - Installer
-        - Other
+        - "PowerShell Script"
+        - "GUI Application"
+        - "CLI Tool"
+        - "Portable EXE"
+        - "Web Generator"
+        - "Batch or Config Script"
+        - "Installer"
+        - "Other"
     validations:
       required: true
 
   - type: checkboxes
     id: os_compatibility
     attributes:
-      label: Windows Compatibility
+      label: "Windows Compatibility"
       options:
-        - label: Windows 10 (22H2+)
-        - label: Windows 11 (23H2+)
-        - label: Server / Enterprise
+        - label: "Windows 10 (22H2+)"
+        - label: "Windows 11 (23H2+)"
+        - label: "Server or Enterprise"
     validations:
       required: true
 
   - type: textarea
     id: reasoning
     attributes:
-      label: 📝 Details & Justification
-      description: |
-        **If Adding**: Brief description, launch/install command, and verification notes.
-        **If Updating**: What changed? (New version, fixed compatibility, broken link, etc.)
-        **If Removing/Archiving**: Why? (Abandoned, breaks modern Windows, unsafe, superseded?)
-      placeholder: Provide clear context to speed up review.
+      label: "Details and Justification"
+      description: "If adding: provide a brief description, launch command, and verification notes. If updating: explain what changed. If removing: explain why it should be archived (abandoned, broken, unsafe, etc.)."
+      placeholder: "Provide clear context to speed up review."
     validations:
       required: true
 
   - type: textarea
     id: verification_proof
     attributes:
-      label: 🔍 Verification Evidence (Optional but Recommended)
-      description: |
-        - Link to recent commits/releases
-        - VM test results or screenshots
-        - Issue/PR links from the original repo
-        - Security audit or community feedback
+      label: "Verification Evidence (Optional)"
+      description: "Link to recent commits, releases, VM test results, screenshots, or security audits."
     validations:
       required: false
 
   - type: checkboxes
     id: checklist
     attributes:
-      label: ✅ Pre-Submission Checklist
+      label: "Pre-Submission Checklist"
       options:
-        - label: I have searched existing `tools/` and `categories/` files for duplicates
-        - label: URL uses HTTPS and points to the official source
-        - label: For removal requests: I've confirmed the tool is broken, unsafe, or unmaintained (>12mo inactivity)
-        - label: I understand this repo only links to tools; it does not host binaries
+        - label: "I have searched existing files for duplicates"
+        - label: "URL uses HTTPS and points to the official source"
+        - label: "For removal requests: I have confirmed the tool is broken, unsafe, or unmaintained for over 12 months"
+        - label: "I understand this repository only links to tools and does not host binaries"
     validations:
       required: true
