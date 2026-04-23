@@ -9,7 +9,7 @@
 - **Launch/Install:** Download ZIP, run executable
 - **Notes:** Auto-creates restore point, aggressive defaults
 
-### [builtbybel/Debotnet](https://github.com/builtbybel/debotnet)
+### [builtbybel/Debotnet](https://github.com/builtbybel/Debotnet)
 - **Type:** `C# Portable`
 - **OS:** `Both`
 - **Last Verified:** `2026-04-23`
@@ -17,7 +17,7 @@
 - **Launch/Install:** Run EXE as admin
 - **Notes:** Clean interface, safe removal presets
 
-### [builtbybel/SharpApp](https://github.com/builtbybel/sharpapp)
+### [builtbybel/SharpApp](https://github.com/builtbybel/SharpApp)
 - **Type:** `C# GUI`
 - **OS:** `Both`
 - **Last Verified:** `2026-04-23`

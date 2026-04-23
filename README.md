@@ -58,13 +58,13 @@ irm app.sophi.app -useb | iex
 - [O&O ShutUp10++](https://www.oo-software.com/en/shutup10) – Free antispy utility with 200+ privacy toggles
 - [W10Privacy](https://www.w10privacy.de/english-home/) – Detailed privacy control panel with toggle explanations
 - [privacy.sexy](https://privacy.sexy/) – Web-based generator for transparent privacy scripts
-- [builtbybel/Debotnet](https://github.com/builtbybel/debotnet) – Portable privacy tool with safe defaults
+- [builtbybel/Debotnet](https://github.com/builtbybel/Debotnet) – Portable privacy tool with safe defaults
 - [WPD](https://wpd.app/) – Modern dashboard for privacy, firewall, and app permissions
 
 ### 🗑️ App & Bloatware Management
 - [Sycnex/Windows10Debloater](https://github.com/Sycnex/Windows10Debloater) – Classic interactive debloater (legacy)
 - [Fs00/Win10BloatRemover](https://github.com/Fs00/Win10BloatRemover) – CLI-focused app removal tool
-- [builtbybel/SharpApp](https://github.com/builtbybel/sharpapp) – Clean UI for managing built-in Store apps
+- [builtbybel/SharpApp](https://github.com/builtbybel/SharpApp) – Clean UI for managing built-in Store apps
 
 ### 🎨 UI & Experience Customization
 - [Open-Shell](https://sourceforge.net/projects/open-shell.mirror/) – Restore classic Start Menu and Explorer

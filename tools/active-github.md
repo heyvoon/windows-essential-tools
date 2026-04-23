@@ -65,7 +65,7 @@
 - **Launch/Install:** Download binary or build from source
 - **Notes:** Win10 support being phased; highly recommended for Win11
 
-### [builtbybel/debotnet](https://github.com/builtbybel/debotnet)
+### [builtbybel/Debotnet](https://github.com/builtbybel/Debotnet)
 - **Type:** `C# Portable`
 - **OS:** `Both`
 - **Last Verified:** `2026-04-23`
@@ -73,7 +73,7 @@
 - **Launch/Install:** Download EXE, run as admin
 - **Notes:** Clean UI, frequent updates, safe rollback
 
-### [builtbybel/sharpapp](https://github.com/builtbybel/sharpapp)
+### [builtbybel/SharpApp](https://github.com/builtbybel/SharpApp)
 - **Type:** `C# GUI`
 - **OS:** `Both`
 - **Last Verified:** `2026-04-23`
